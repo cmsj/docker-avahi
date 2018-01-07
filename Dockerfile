@@ -5,7 +5,7 @@ RUN yum install -y deltarpm yum-utils && \
     yum install avahi -y && \
     yum clean all
 RUN mkdir -p /var/run/dbus
-RUN sed -i -e 's/#host-name=foo/host-name=nucker/' /etc/avahi-daemon/avahi-daemon.conf
+RUN sed -i -e 's/#host-name=foo/host-name=nucker/' /etc/avahi/avahi-daemon.conf
 RUN sed -i -e 's/avahi-daemon -s/avahi-daemon -s --no-drop-root/' /usr/lib/systemd/system/avahi-daemon.service
 VOLUME /var/run/dbus
 ENTRYPOINT avahi-daemon --no-drop-root
